@@ -9,23 +9,215 @@ podTemplate(label: 'mypod', serviceAccount: 'jenkins', containers: [
 
     node('mypod') {
         ////////// Step 1 //////////
-        stage('Docker Container') {
+        stage('Git Clone And Setup') {
             container('docker'){
                 sh "docker info"
                 sh "docker pull ubuntu"
-                sh "sleep 60"
             }
-        }
-        stage('Helm') {
             container('helm'){
                 sh "helm ls"
                 sh "helm status jenkins"
             }
-        }      
-        stage('KubeCtl') {
             container('kubectl'){
                 sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
             }
-        } 
+        }
+        stage('Build & Unit Test') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Functional Tests') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Publish Docker Image and Helm Charts') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Deploy to Dev Test Environment') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Dev Tests') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Cleanup Dev Test Environment Deployment') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Go for Staging Environment Deployment?') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Deploy to Staging Environment') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Staging Tests') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Cleanup Staging Environment Deployment') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Go for Production Environment Deployment?') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Deploy to Production Environment') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('Production Tests') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
+        stage('End') {
+            container('docker'){
+                sh "docker info"
+                sh "docker pull ubuntu"
+            }
+            container('helm'){
+                sh "helm ls"
+                sh "helm status jenkins"
+            }
+            container('kubectl'){
+                sh "kubectl version"
+                sh "kubectl get all --all-namespaces"
+            }
+        }
     }
 }
