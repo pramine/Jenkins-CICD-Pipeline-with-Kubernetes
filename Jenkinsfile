@@ -205,19 +205,5 @@ podTemplate(label: 'mypod', serviceAccount: 'jenkins', containers: [
                 sh "kubectl get all --all-namespaces"
             }
         }
-        stage('End') {
-            container('docker'){
-                sh "docker info"
-                sh "docker pull ubuntu"
-            }
-            container('helm'){
-                sh "helm ls"
-                sh "helm status jenkins"
-            }
-            container('kubectl'){
-                sh "kubectl version"
-                sh "kubectl get all --all-namespaces"
-            }
-        }
     }
 }
