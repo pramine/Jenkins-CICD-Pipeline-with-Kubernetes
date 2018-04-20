@@ -203,7 +203,7 @@ podTemplate(label: 'mypod', serviceAccount: 'jenkins', containers: [
             container('kubectl'){
                 sh "kubectl version"
                 sh "kubectl get all --all-namespaces"
-		sh "End of Pipelin"
+		echo "End of Pipelin"
             }
         }
     }
